@@ -1,0 +1,93 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+---
+<Layout title="login">
+    <head>
+        <title>Login</title>
+    </head>
+    <body>
+    <div class="container" style="width: 30%;margin-top: 20px">
+        <h1>Login</h1>
+        <form>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button id="login" type="submit" style="width: 25%;">Log In</button>
+            <button id="register" style="width: 25%;">Register</button>
+        </form>
+    </div>
+    </body>
+</Layout>
+
+<script>
+    // 获取username框元素
+    const usernameInput = document.getElementById('username') as HTMLInputElement
+    const pswdInput = document.getElementById('password') as HTMLInputElement
+
+    const loginButton = document.getElementById('login') as HTMLDivElement
+    loginButton.onclick = handleLogin
+    function handleLogin() {
+
+        if(usernameInput.value=='admin'&&pswdInput.value=='admin'){
+            // alert('Success');
+            window.location.href = '/'
+            window.event.returnValue=false // 有用与否，未可知也
+            // window.location.reload()
+        }
+        else {
+            alert('Wrong username or password!');
+        }
+    }
+
+
+</script>
+
+<style>
+    .container {
+        width: 30%;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f4f4f4;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 10px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 5px;
+    }
+
+    button[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+</style>
