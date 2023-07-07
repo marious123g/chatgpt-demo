@@ -36,6 +36,7 @@ import Layout from "../layouts/Layout.astro";
 
         if(usernameInput.value=='admin'&&pswdInput.value=='admin'){
             // alert('Success');
+            window.sessionStorage.setItem("username",usernameInput.value) // 暂定：存入sessionStorage
             window.location.href = '/'
             window.event.returnValue=false // 有用与否，未可知也
             // window.location.reload()

@@ -9,28 +9,34 @@ import 'highlight.js/styles/atom-one-dark.css'
 ---
 
 <Layout title="ChatGPT API Demo">
-  <main >
-    <Header />
-    <Generator client:load />
-    <Footer />
-  </main>
+    <main>
+        <Header/>
+        <Generator client:load/>
+        <Footer/>
+    </main>
 </Layout>
 
 <script>
-async function checkCurrentAuth() {
-  const password = localStorage.getItem('pass')
-  const response = await fetch('/api/auth', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      pass: password,
-    }),
-  })
-  const responseJson = await response.json()
-  if (responseJson.code !== 0)
-    window.location.href = '/password'
-}
-checkCurrentAuth()
+    // 检查用户登录状态，如未登录则跳转
+    const username=window.sessionStorage.getItem("username")
+    console.log("当前登录用户：",username)
+    if(username==''||username==null) {
+        window.location.href = '/login';
+    }
+    // async function checkCurrentAuth() {
+    //     const password = localStorage.getItem('pass')
+    //     const response = await fetch('/api/auth', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //         body: JSON.stringify({
+    //             pass: password,
+    //         }),
+    //     })
+    //     const responseJson = await response.json()
+    //     if (responseJson.code !== 0)
+    //         window.location.href = '/password'
+    // }
+    // checkCurrentAuth()
 </script>
