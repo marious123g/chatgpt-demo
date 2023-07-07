@@ -26,9 +26,7 @@ export default defineConfig({
     },
   },
   integrations: [
-    unocss({
-      injectReset:false,
-    }),
+    unocss(),
     solidJs(),
     AstroPWA({
       registerType: 'autoUpdate',
